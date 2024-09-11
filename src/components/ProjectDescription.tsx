@@ -49,7 +49,7 @@ const ProjectDescription = () => {
                 </div>
 
                 <div className='mt-4'>
-                    <Button label={'ADD TO CARD'} />
+                    <Button label={'Add to Cart'} />
                 </div>
             </div>
         </div>

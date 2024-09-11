@@ -1,4 +1,5 @@
 import { ProductDetail } from "../Common/interface";
+import Button from "./Button";
 
 interface CardComponentProps {
     item: ProductDetail;
@@ -30,6 +31,7 @@ const CardComponent = ({ item }: CardComponentProps) => {
             <div className='text-sm font-bold text-[#282c3f] whitespace-nowrap my-2'>
                 <span>{`Rs.${item?.price}`}</span>
             </div>
+            <Button label={'Add to Cart'} />
             {/* <p className='text-sm text-[#5a5a5a] leading-relaxed'>Elevate your casual wardrobe with our Classic Black Hooded Sweatshirt. Made from high-quality, soft fabric that ensures comfort and durability, this hoodie features a spacious kangaroo pocket and an adjustable drawstring hood. Its versatile design makes it perfect for a relaxed day at home or a casual outing.</p> */}
         </div>
     )
