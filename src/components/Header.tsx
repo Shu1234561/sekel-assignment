@@ -1,7 +1,9 @@
 import { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
     const [inputValue, setInputValue] = useState('');
+    const navigate = useNavigate();
 
     const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -28,7 +30,7 @@ function Header() {
 
                 </div>
                 <div className="flex items-center gap-2 sm:gap-6 md:pr-6">
-                    <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg" alt="cart" className="w-8 h-8 cursor-pointer" />
+                    <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg" alt="cart" className="w-8 h-8 cursor-pointer" onClick={() => navigate('/viewcart')}/>
                 </div>
             </div>
         </div>

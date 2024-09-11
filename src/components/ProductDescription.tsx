@@ -2,7 +2,7 @@ import React from 'react'
 import Button from './Button';
 
 
-const ProjectDescription = () => {
+const ProductDescription = () => {
     const data = {
         id: 12,
         title: 'Classic Black Baseball Cap',
@@ -56,4 +56,4 @@ const ProjectDescription = () => {
     )
 }
 
-export default ProjectDescription;
+export default ProductDescription;

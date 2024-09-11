@@ -3,17 +3,17 @@ import Button from "./Button";
 
 interface CardComponentProps {
     item: ProductDetail;
+    onDetail: (e: number) => void;
 }
 
-const CardComponent = ({ item }: CardComponentProps) => {
+const CardComponent = ({ item, onDetail}: CardComponentProps) => {
     const sanitizeImages = (images: string[]) => {
         return images.map(image => image.replace(/[\[\]\"\']/g, ''));
     }
     const sanitizedImages = sanitizeImages(item?.images);
-    // console.log("sanitizedImages:::", sanitizedImages);
     
     return (
-        <div className='w-[300px] border border-gray-200 rounded-md mt-4 shadow-md p-4 cursor-pointer'>
+        <div className='w-[300px] border border-gray-200 rounded-md mt-4 shadow-md p-4 cursor-pointer' onClick={() => onDetail(item.id)}>
             <img src={sanitizedImages[0] || 'https://i.imgur.com/Wv2KTsf.jpeg'} alt={item?.title} className='rounded-md m-auto min-h-[267px]'/>
             {/* {item.images.length > 1 ?
                     item.images.map((image, index) => (
