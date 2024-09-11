@@ -1,4 +1,5 @@
 import React from 'react'
+import withRootLayout from '../HOCs/withRootLayout'
 
 const ShoopingCart = () => {
     return (
@@ -36,4 +37,6 @@ const ShoopingCart = () => {
     )
 }
 
-export default ShoopingCart
+export default withRootLayout({
+    component: ShoopingCart
+})

@@ -1,3 +1,5 @@
+import { ComponentType, ReactNode } from "react";
+
 export interface ProductDetail {
     id: number;
     title: string;
@@ -13,4 +15,12 @@ export interface ProductDetail {
       creationAt: string;
       updatedAt: string;
     };
+}
+
+export interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export interface RootLayoutHocProps{
+  component: ComponentType;
 }

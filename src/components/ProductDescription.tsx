@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './Button';
+import withRootLayout from '../HOCs/withRootLayout';
 
 
 const ProductDescription = () => {
@@ -56,4 +57,6 @@ const ProductDescription = () => {
     )
 }
 
-export default ProductDescription;
+export default withRootLayout({
+    component: ProductDescription,
+})

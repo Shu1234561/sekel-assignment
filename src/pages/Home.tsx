@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import CardComponent from '../components/CardComponent';
 import { useNavigate } from 'react-router-dom';
+import withRootLayout from '../HOCs/withRootLayout';
 
 function Home() {
     const [data, setData] = useState([]);
@@ -23,8 +24,6 @@ function Home() {
 
     return (
         <div className="mx-auto p-4">
-            {/* header */}
-            <Header />
             {/* Product Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {data.map((item, index) => (
@@ -36,4 +35,6 @@ function Home() {
     );
 }
 
-export default Home;
+export default withRootLayout({
+    component: Home,
+  });
