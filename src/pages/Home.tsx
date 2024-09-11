@@ -23,9 +23,9 @@ function Home() {
     }
 
     return (
-        <div className="mx-auto p-4">
+        <div className="mx-auto">
             {/* Product Card */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {data.map((item, index) => (
                     <CardComponent item={item} onDetail={handleRedirect} key={index} />
                 ))}
