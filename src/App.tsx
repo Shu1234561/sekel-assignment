@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CardComponent from './components/CardComponent';
 import Header from './components/Header';
 import ProjectDescription from './components/ProjectDescription';
+import ShoopingCart from './components/ShoopingCart';
 
 function App() {
   const [data, setData] = useState([]);
@@ -26,7 +27,8 @@ function App() {
           <CardComponent item={item} />
         ))}
       </div> */}
-      <ProjectDescription/>
+      {/* <ProjectDescription/> */}
+      <ShoopingCart/>
     </div>
   );
 }
