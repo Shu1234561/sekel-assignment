@@ -13,7 +13,7 @@ const CardComponent = ({ item, onDetail}: CardComponentProps) => {
     const sanitizedImages = sanitizeImages(item?.images);
     
     return (
-        <div className='w-[300px] border border-gray-200 rounded-md mt-4 shadow-md p-4 cursor-pointer' onClick={() => onDetail(item.id)}>
+        <div className='w-[320px] border border-gray-200 rounded-md mt-4 shadow-md p-4 cursor-pointer' onClick={() => onDetail(item.id)}>
             <img src={sanitizedImages[0] || 'https://i.imgur.com/Wv2KTsf.jpeg'} alt={item?.title} className='rounded-md m-auto min-h-[267px]'/>
             {/* {item.images.length > 1 ?
                     item.images.map((image, index) => (
