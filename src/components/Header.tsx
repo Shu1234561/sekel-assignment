@@ -31,7 +31,7 @@ function Header() {
           </div>
         </div>
         <div className="relative flex items-center gap-2 sm:gap-6 md:pr-6">
-          <div className="relative flex flex-col items-center cursor-pointer">
+          <div className="relative flex flex-col items-center cursor-pointer" onClick={() => navigate("/viewcart")}>
             {cartItems.length > 0 && (
               <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-[18px] h-[18px] flex items-center justify-center">
                 {cartItems.length}
@@ -41,7 +41,6 @@ function Header() {
               src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg"
               alt="cart"
               className="w-8 h-8 cursor-pointer"
-              onClick={() => navigate("/viewcart")}
             />
           </div>
         </div>
