@@ -21,7 +21,7 @@ const ShoopingCart = () => {
             <div className='flex flex-col gap-4 w-[820px]'>
                 {cartItems.length > 0 ?
                     cartItems.map((item, index) =>
-                        <div className='bg-white flex w-full align-center gap-4 p-6 h-40'>
+                        <div className='bg-white flex w-full align-center gap-4 p-6 h-40 rounded-md'>
                             <img src={sanitizeImages(item.images)[0]} alt='img' className='rounded-md w-28 h-28' />
                             <div className='h-auto'>
                                 <p className='text-[#212121] text-lg'>{item.title}</p>
@@ -33,14 +33,14 @@ const ShoopingCart = () => {
                             </div>
                         </div>
                     ) :
-                    <div className='flex bg-white items-center justify-center w-full h-full'>
-                        <p className='text-lg'>No items added</p>
+                    <div className='flex bg-white items-center justify-center w-full h-full rounded-md'>
+                        <p className='text-lg font-medium'>No items added</p>
                     </div>
                 }
             </div>
 
             {/* right section */}
-            <div className='w-96 h-72 bg-white'>
+            <div className='w-96 h-72 bg-white rounded-md'>
                 <p className='pt-3 px-6 text-[#878787] min-h-12 font-medium border-b border-[#f0f0f0] text-[16px]'>PRICE DETAILS</p>
                 <div className='px-6'>
                     <div className='w-fulll flex flex-col border-b-2 border-dashed border-[#878787]'>
