@@ -5,11 +5,15 @@ import { useParams } from "react-router-dom";
 import { ProductDetail } from "../Common/interface";
 import { sanitizeImages } from "../Utils/helper";
 import { FullLoader } from "./Loader";
+import { useDispatch } from "react-redux";
+import { increment } from "../store/countCart";
+import { addItems } from "../store/cart";
 
 const ProductDescription = () => {
   const [data, setData] = useState<ProductDetail[]>([]);
   const [loading, setLoading] = useState(true);
   const { productId } = useParams();
+  const dispatch = useDispatch();
 
   const getProducts = async () => {
     try {
@@ -31,6 +35,11 @@ const ProductDescription = () => {
   const productIdNumber = parseInt(productId || "", 10);
   const details = data.find((item) => item?.id === productIdNumber);
   const sanitizedImages = details ? sanitizeImages(details.images) : [];
+
+  const handleAddToCart = (product: ProductDetail | undefined) => {
+    dispatch(increment());
+    dispatch(addItems(product))
+  };
 
   return (
     <div className="mt-8">
@@ -67,7 +76,7 @@ const ProductDescription = () => {
         </div>
 
         <div className="mt-4">
-          <Button label={"Add to Cart"} />
+          <Button label={"Add to Cart"} onClick={(e: React.MouseEvent) => handleAddToCart(details)}/>
         </div>
       </div>
     </div>
