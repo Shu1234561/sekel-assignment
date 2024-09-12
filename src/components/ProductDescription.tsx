@@ -4,17 +4,22 @@ import withRootLayout from "../HOCs/withRootLayout";
 import { useParams } from "react-router-dom";
 import { ProductDetail } from "../Common/interface";
 import { sanitizeImages } from "../Utils/helper";
+import { FullLoader } from "./Loader";
 
 const ProductDescription = () => {
   const [data, setData] = useState<ProductDetail[]>([]);
+  const [loading, setLoading] = useState(true);
   const { productId } = useParams();
 
   const getProducts = async () => {
     try {
+      setLoading(true);
       const response = await fetch("https://api.escuelajs.co/api/v1/products");
       const data = await response.json();
       setData(data);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error("Failed to fetch products:", error);
     }
   };
@@ -29,6 +34,7 @@ const ProductDescription = () => {
 
   return (
     <div className="mt-8">
+      {loading && <FullLoader/>}
       <div className="w-[58%] float-left grid grid-cols-2 gap-4">
         {sanitizedImages?.map((img: string, index: number) => (
           <img

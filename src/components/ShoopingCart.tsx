@@ -1,4 +1,3 @@
-import React from 'react'
 import withRootLayout from '../HOCs/withRootLayout'
 import { useSelector } from 'react-redux'
 import { CartStatus } from '../Common/interface'
@@ -6,8 +5,6 @@ import { sanitizeImages } from '../Utils/helper'
 
 const ShoopingCart = () => {
     const cartItems = useSelector((state: CartStatus) => state?.cart?.items)
-    console.log("cartItems::", cartItems);
-
     const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
 
     return (

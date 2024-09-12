@@ -6,16 +6,25 @@ import { useDispatch } from "react-redux";
 import { increment } from "../store/countCart";
 import { addItems } from "../store/cart";
 import { ProductDetail } from "../Common/interface";
+import { FullLoader } from "../components/Loader";
 
 function Home() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const getProducts = () => {
-    fetch("https://api.escuelajs.co/api/v1/products")
-      .then((res) => res.json())
-      .then((data) => setData(data));
+  const getProducts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("https://api.escuelajs.co/api/v1/products");
+      const data = await response.json();
+      setData(data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error("Failed to fetch products:", error);
+    }
   };
 
   useEffect(() => {
@@ -33,6 +42,7 @@ function Home() {
 
   return (
     <div className="mx-auto">
+      {loading && <FullLoader/>}
       {/* Product Card */}
       <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {data.map((item, index) => (
