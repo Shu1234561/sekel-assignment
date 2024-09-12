@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import withRootLayout from "../HOCs/withRootLayout";
 import { useDispatch } from "react-redux";
 import { increment } from "../store/countCart";
+import { addItems } from "../store/cart";
+import { ProductDetail } from "../Common/interface";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -24,9 +26,9 @@ function Home() {
     navigate(`/description/${id}`);
   };
 
-  const handleAddToCart = () => {
-    // onAddToCart(item);
+  const handleAddToCart = (product: ProductDetail) => {
     dispatch(increment());
+    dispatch(addItems(product))
   };
 
   return (
@@ -42,7 +44,6 @@ function Home() {
           />
         ))}
       </div>
-      {/* <ShoopingCart/> */}
     </div>
   );
 }

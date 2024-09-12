@@ -1,22 +1,36 @@
 import React from 'react'
 import withRootLayout from '../HOCs/withRootLayout'
+import { useSelector } from 'react-redux'
+import { CartStatus } from '../Common/interface'
+import { sanitizeImages } from '../Utils/helper'
 
 const ShoopingCart = () => {
+    const cartItems = useSelector((state: CartStatus) => state?.cart?.items)
+    console.log("cartItems::", cartItems);
+
+    const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+
     return (
-        <div className='flex gap-4 justify-between mx-auto max-w-[1260px] mt-8'>
-            <div className='bg-white flex w-full align-center gap-4 p-6 h-40'>
-                <img src='https://i.imgur.com/Wv2KTsf.jpeg' alt='img' className='rounded-md w-28 h-28' />
-                <div className='h-auto'>
-                    <p className='text-[#212121] text-lg'>CardComponentProps CardComponentProps</p>
-                    <p className='font-medium text-lg mt-5'>₹130</p>
-                </div>
+        <div className='flex gap-4 justify-between mx-auto max-w-[1200px] mt-8'>
+            {/* left section */}
+            <div className='flex flex-col gap-4 w-[820px]'>
+                {cartItems.map((item, index) =>
+                    <div className='bg-white flex w-full align-center gap-4 p-6 h-40'>
+                        <img src={sanitizeImages(item.images)[0]} alt='img' className='rounded-md w-28 h-28' />
+                        <div className='h-auto'>
+                            <p className='text-[#212121] text-lg'>{item.title}</p>
+                            <p className='font-medium text-lg mt-5'>₹{item.price}</p>
+                        </div>
+                    </div>
+                )}
             </div>
 
-            <div className='w-[380px] bg-white'>
+            {/* right section */}
+            <div className='w-96 h-72 bg-white'>
                 <p className='pt-3 px-6 text-[#878787] min-h-12 font-medium border-b border-[#f0f0f0] text-[16px]'>PRICE DETAILS</p>
                 <div className='px-6'>
                     <div className='w-fulll flex flex-col border-b-2 border-dashed border-[#878787]'>
-                        <p className='flex justify-between mt-5 text-[16px]'>Price (2 items) <span>₹40,589</span></p>
+                        <p className='flex justify-between mt-5 text-[16px]'>{`Price (${cartItems.length} items)`} <span>{`₹${totalPrice}`}</span></p>
                         <div className='flex justify-between my-5 text-[16px]'>
                             <p>Delivery Charges</p>
                             <div className='flex gap-2'>
@@ -29,7 +43,7 @@ const ShoopingCart = () => {
                         <p className='font-medium text-lg'>
                             Total Amount
                         </p>
-                        <span className='font-medium text-lg'>₹28,120</span>
+                        <span className='font-medium text-lg'>₹{totalPrice}</span>
                     </div>
                 </div>
             </div>

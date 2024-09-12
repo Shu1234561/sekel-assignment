@@ -1,6 +1,4 @@
-import React from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import App from '../App';
 import ProductDescription from '../components/ProductDescription';
 import ShoopingCart from '../components/ShoopingCart';
 import Home from '../pages/Home';

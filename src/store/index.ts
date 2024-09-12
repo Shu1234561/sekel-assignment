@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import countCart from './countCart';
+import cart from './cart';
 import {
     persistReducer,
   } from 'redux-persist';
@@ -8,13 +9,14 @@ import persistStore from 'redux-persist/es/persistStore';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['counter'],
+    whitelist: ['counter', 'cart'],
   };
 
 const persistedReducer = persistReducer(
     persistConfig,
     combineReducers({
         counter: countCart,
+        cart: cart
     })
 )
 

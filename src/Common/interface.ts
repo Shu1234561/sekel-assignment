@@ -24,3 +24,9 @@ export interface RootLayoutProps {
 export interface RootLayoutHocProps{
   component: ComponentType;
 }
+
+export interface CartStatus {
+  cart: {
+    items: ProductDetail[]
+  }
+}
