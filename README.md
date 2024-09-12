@@ -1,15 +1,22 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# sekel-assignment
-=======
-# setup
->>>>>>> 7561d5c (Initial commit)
-=======
-# setup
-=======
-# Getting Started with Create React App
+# Simple E-commerce Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This project is a simple e-commerce application built using React, Redux, and React Router. Users can browse products, view product details, add products to a shopping cart, and persist their cart data across page refreshes.
+
+## Features
+- Product Listing Page with API integration.
+- Product Details Page with additional information.
+- Shopping Cart with Add/Remove functionality.
+- Persistent Cart data using localStorage.
+
+## Setup
+
+1. Clone the repository:
+   ```bash
+   git clone <repo-url>
+   cd e-commerce-app
+   npm install
+   npm start
 
 ## Available Scripts
 
