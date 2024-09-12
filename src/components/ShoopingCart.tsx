@@ -1,11 +1,19 @@
 import withRootLayout from '../HOCs/withRootLayout'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { CartStatus } from '../Common/interface'
 import { sanitizeImages } from '../Utils/helper'
+import { removeItems } from '../store/cart'
+import { decrement } from '../store/countCart'
 
 const ShoopingCart = () => {
+    const dispatch = useDispatch()
     const cartItems = useSelector((state: CartStatus) => state?.cart?.items)
     const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+
+    const handleRemoveFromCart = (productId: number) => {        
+        dispatch(removeItems(productId));
+        dispatch(decrement());
+    }
 
     return (
         <div className='flex gap-4 justify-between mx-auto max-w-[1200px] mt-8'>
@@ -17,6 +25,7 @@ const ShoopingCart = () => {
                         <div className='h-auto'>
                             <p className='text-[#212121] text-lg'>{item.title}</p>
                             <p className='font-medium text-lg mt-5'>₹{item.price}</p>
+                            <p className='font-medium text-lg mt-3 w-fit cursor-pointer hover:text-[#2370f4]' onClick={() => handleRemoveFromCart(item.id)}>Remove</p>
                         </div>
                     </div>
                 )}
