@@ -2,11 +2,13 @@ import { ChangeEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../store";
+import { CartStatus } from "../Common/interface";
 
 function Header() {
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
   const bagItemCount = useSelector((state: RootState) => state.counter.count);
+  const cartItems = useSelector((state: CartStatus) => state?.cart?.items)
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -30,9 +32,9 @@ function Header() {
         </div>
         <div className="relative flex items-center gap-2 sm:gap-6 md:pr-6">
           <div className="relative flex flex-col items-center cursor-pointer">
-            {bagItemCount > 0 && (
+            {cartItems.length > 0 && (
               <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-[18px] h-[18px] flex items-center justify-center">
-                {bagItemCount}
+                {cartItems.length}
               </span>
             )}
             <img
